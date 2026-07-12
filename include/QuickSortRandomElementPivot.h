@@ -9,30 +9,25 @@ namespace RandomElementQuickSort
     inline int partition(std::vector <int> & arr, int low, int high)
     {
         int randomIndex = low + rand() % (high - low) / 2;
-        int pivot = arr[randomIndex];
+        std::swap(arr[low], arr[randomIndex]);
+        int pivot = arr[low];
 
-        int left = low - 1;
-        int right = high + 1;
+        int i = low + 1;
+        int j = high;
 
         while (true)
         {
-            do
-            {
-                left++;
-            } while (arr[left] < pivot);
+            while(i <= high && arr[i] <= pivot) i++;
+            while(arr[j] > pivot)   j--;
 
-            do
-            {
-                right--;
-            } while (arr[right] > pivot);
-            
-            if(left >= right)
-            {
-                return right;
-            }
-            
-            std::swap(arr[left], arr[right]);
+            if(i < j)
+                std::swap(arr[i], arr[j]);
+            else
+                break;
         }
+
+        std::swap(arr[low],arr[j]);
+        return j;
         
     }
 
