@@ -3,7 +3,7 @@
 #include <vector>
 #include <utility>
 
-namespace LastElementQuickSort
+namespace FirstPivotQuickSort
 {
     inline int partition(std::vector <int> &arr, int low, int high)
     {

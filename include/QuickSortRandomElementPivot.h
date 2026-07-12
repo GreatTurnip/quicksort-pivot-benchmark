@@ -4,7 +4,7 @@
 #include <ctime>
 #include <utility>
 
-namespace RandomElementQuickSort
+namespace RandomPivotQuickSort
 {
     inline int partition(std::vector <int> & arr, int low, int high)
     {
