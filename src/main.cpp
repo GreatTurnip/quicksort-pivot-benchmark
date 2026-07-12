@@ -64,6 +64,9 @@ void experiment(const string &arrayType, vector<int> (*generator)(int), const st
             vector <int> base = generator(n); //this is the main copy
 
             vector <int> a = base;
+            vector <int> b = base;
+            vector <int> c = base;
+            vector <int> d = base;
             totalFirst += executionTimeCounter(
                 [&]()
                 {
@@ -73,19 +76,19 @@ void experiment(const string &arrayType, vector<int> (*generator)(int), const st
             totalLast += executionTimeCounter(
                 [&]()
                 {
-                    LastPivotQuickSort::quicksort(a, 0, (int)a.size() - 1);
+                    LastPivotQuickSort::quicksort(b, 0, (int)b.size() - 1);
                 }
             );
             totalMiddle += executionTimeCounter(
                 [&]()
                 {
-                    MiddlePivotQuickSort::quicksort(a, 0, (int)a.size() - 1);
+                    MiddlePivotQuickSort::quicksort(c, 0, (int)c.size() - 1);
                 }
             );
             totalRandom += executionTimeCounter(
                 [&]()
                 {
-                    RandomPivotQuickSort::quicksort(a, 0, (int)a.size() - 1);
+                    RandomPivotQuickSort::quicksort(d, 0, (int)d.size() - 1);
                 }
             );
         }
@@ -107,9 +110,9 @@ int main()
 {
     srand(time(0));
 
-    experiment("Random", randomArray, "random.csv");
-    experiment("Ascending", ascendingArray, "ascending_results.csv");
-    experiment("Descending", descendingArray, "descending_results.csv");
+    experiment("Random", randomArray, "results/random_result.csv");
+    experiment("Ascending", ascendingArray, "results/ascending_result.csv");
+    experiment("Descending", descendingArray, "results/descending_result.csv");
 
     cout << "EVERYTHING IS FINISHED" <<endl;
     return 0;

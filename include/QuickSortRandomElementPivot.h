@@ -8,27 +8,23 @@ namespace RandomPivotQuickSort
 {
     inline int partition(std::vector <int> & arr, int low, int high)
     {
-        int randomIndex = low + rand() % (high - low) / 2;
+        int randomIndex = low + rand() % (high - low  + 1);
         std::swap(arr[low], arr[randomIndex]);
         int pivot = arr[low];
 
-        int i = low + 1;
-        int j = high;
+        int i = low - 1;
+        int j = high + 1;
 
         while (true)
         {
-            while(i <= high && arr[i] <= pivot) i++;
-            while(arr[j] > pivot)   j--;
-
-            if(i < j)
-                std::swap(arr[i], arr[j]);
-            else
-                break;
+            do { i++; } while (arr[i] < pivot);
+            do { j--; } while (arr[j] > pivot);
+ 
+            if (i >= j)
+                return j;
+ 
+            std::swap(arr[i], arr[j]);
         }
-
-        std::swap(arr[low],arr[j]);
-        return j;
-        
     }
 
     inline void quicksort(std::vector <int> &arr, int low, int high)

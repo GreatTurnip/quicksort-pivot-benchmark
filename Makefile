@@ -1,0 +1,19 @@
+CXX := g++
+CXXFLAGS := -O2 -std=c++17 -Wall -Iinclude
+
+HEADERS := $(wildcard include/*.h)
+SRC := src/main.cpp
+TARGET := build/quicksort_test
+
+all : $(TARGET)
+
+$(TARGET) : $(SRC) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
+
+run : $(TARGET)
+	./$(TARGET)
+
+clean:
+	rm -f $(TARGET)
+
+.PHONY: all run clean
