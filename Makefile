@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -O2 -std=c++17 -Wall -Iinclude
+CXXFLAGS := -O3 -march=native -std=c++17 -Wall -Iinclude
 
 HEADERS := $(wildcard include/*.h)
 SRC := src/main.cpp
