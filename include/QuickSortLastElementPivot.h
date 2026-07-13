@@ -9,19 +9,22 @@ namespace LastPivotQuickSort
     {
         int pivot = arr[high]; //here the last element is the pivot
         int i = low - 1; 
+        int j = high + 1;
 
-        for(int j = low; j < high; j++)
+        while(true)
         {
-            if(arr[j] <= pivot)
+            do
             {
                 i++;
-                std::swap(arr[i], arr[j]);
-            }
+            }while(arr[i] < pivot);
+            do
+            {
+                j--;
+            } while (arr[j] > pivot);
+
+            if( i >= j) return j;
+            std::swap(arr[i], arr[j]);            
         }
-
-        std::swap(arr[i + 1], arr[high]);
-
-        return i + 1;
     }
 
     inline void quicksort(std::vector <int> &arr, int low , int high)

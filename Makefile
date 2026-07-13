@@ -5,13 +5,14 @@ HEADERS := $(wildcard include/*.h)
 SRC := src/main.cpp
 TARGET := build/quicksort_test
 
-all : $(TARGET)
+all: $(TARGET)
 
-$(TARGET) : $(SRC) $(HEADERS)
+$(TARGET): $(SRC) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
-run : $(TARGET)
+run: $(TARGET)
 	./$(TARGET)
+	cd src && python3 graph_generator.py
 
 clean:
 	rm -f $(TARGET)
