@@ -8,6 +8,7 @@ TARGET := build/quicksort_test
 all: $(TARGET)
 
 $(TARGET): $(SRC) $(HEADERS)
+	mkdir -p build
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
 run: $(TARGET)
